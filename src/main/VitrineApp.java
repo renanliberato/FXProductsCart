@@ -61,7 +61,8 @@ public class VitrineApp extends Application {
     private void initComponents() {
         pane = new AnchorPane();
         pane.setPrefSize(800, 600);
-        pane.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, blue 0%, silver 100%);");
+        pane.getStylesheets().add("css/pane.css");
+        pane.getStyleClass().add("pane");
 
         txPesquisa = new TextField();
         txPesquisa.setPromptText("Digite o item para pesquisa");

@@ -43,7 +43,9 @@ public class LoginApp extends Application {
     private void initComponents() {
         pane = new AnchorPane();
         pane.setPrefSize(400, 300);
-        pane.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, blue 0%, silver 100%);");
+        pane.getStylesheets().add("css/pane.css");
+        pane.getStyleClass().add("pane");
+//        pane.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, blue 0%, silver 100%);");
 
         txLogin = new TextField();
         txLogin.setPromptText("Digite aqui seu login");

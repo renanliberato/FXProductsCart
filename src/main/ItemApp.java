@@ -37,13 +37,11 @@ public class ItemApp extends Application {
         "assets/images/grunt_sticker.jpg",
         "assets/images/mac_stickeres.jpg",
         "assets/images/mac_up_stickers.jpg",
-        "assets/images/node_sticker"
+        "assets/images/node_sticker.png"
     };
 
     public void start(Stage stage) throws Exception {
         ItemApp.stage = stage;
-        pane = new AnchorPane();
-        pane.setPrefSize(600, 400);
 
         initComponents();
 
@@ -59,6 +57,11 @@ public class ItemApp extends Application {
     }
 
     public void initComponents() {
+
+        pane = new AnchorPane();
+        pane.setPrefSize(600, 400);
+        pane.getStylesheets().add("css/pane.css");
+        pane.getStyleClass().add("pane");
 
         File imgFile = new File(images[index]);
         imgItem      = new ImageView(new Image(imgFile.toURI().toString()));

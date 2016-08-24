@@ -48,6 +48,7 @@ public class CarrinhoApp extends Application {
 
     public void start(Stage stage) throws Exception {
         CarrinhoApp.stage = stage;
+
         initComponents();
 
         initListeners();
@@ -64,7 +65,8 @@ public class CarrinhoApp extends Application {
     private void initComponents() {
         pane = new AnchorPane();
         pane.setPrefSize(650, 600);
-        pane.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, blue 0%, silver 100%);");
+        pane.getStylesheets().add("css/pane.css");
+        pane.getStyleClass().add("pane");
 
         btExcluirItem     = new Button("Excluir Item");
         btVoltarVitrine   = new Button("Voltar à Vitrine");
