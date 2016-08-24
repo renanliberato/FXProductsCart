@@ -1,6 +1,8 @@
 package main;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -89,7 +91,18 @@ public class ItemApp extends Application {
     }
 
     public void initListeners() {
+        btAddCarrinho.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                VitrineApp.getCarrinho().addProdutos(produto);
 
+                try {
+                    new CarrinhoApp().start(new Stage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     public static Stage getStage() {

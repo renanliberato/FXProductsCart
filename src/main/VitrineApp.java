@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -40,6 +41,7 @@ public class VitrineApp extends Application {
 
     private static Stage stage;
 
+
     @Override
     public void start(Stage stage) throws Exception {
         initComponents();
@@ -64,6 +66,7 @@ public class VitrineApp extends Application {
         txPesquisa = new TextField();
         txPesquisa.setPromptText("Digite o item para pesquisa");
 
+
         tbVitrine = new TableView<ItensProperty>();
         tbVitrine.setPrefSize(780, 550);
 
@@ -79,14 +82,14 @@ public class VitrineApp extends Application {
 
         tbVitrine.getColumns().addAll(columnProduto, columnPreco);
 
-        initItens();
+        initItems();
 
         pane.getChildren().addAll(txPesquisa, tbVitrine);
 
         carrinho = new Carrinho();
     }
 
-    private void initItens() {
+    private void initItems() {
         Vitrine v = new Vitrine();
         v.addProdutos(
                 new Produto("Adesivo AngularJS",5.00),
@@ -154,6 +157,10 @@ public class VitrineApp extends Application {
 
     public Stage getStage() {
         return stage;
+    }
+
+    public static Carrinho getCarrinho() {
+        return carrinho;
     }
 
     public static void main(String[] args) {
