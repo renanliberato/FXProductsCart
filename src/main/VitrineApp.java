@@ -15,9 +15,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.awt.event.ActionListener;
 
 /**
@@ -66,6 +69,10 @@ public class VitrineApp extends Application {
 
         txPesquisa = new TextField();
         txPesquisa.setPromptText("Digite o item para pesquisa");
+        DropShadow ds = new DropShadow();
+        ds.setColor(Color.WHITE);
+        ds.setSpread(0.2);
+        txPesquisa.setEffect(ds);
 
 
         tbVitrine = new TableView<ItensProperty>();
