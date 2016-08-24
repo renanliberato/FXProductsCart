@@ -44,6 +44,7 @@ public class LoginApp extends Application {
         pane = new AnchorPane();
         pane.setPrefSize(400, 300);
         pane.getStylesheets().add("css/pane.css");
+        pane.getStylesheets().add("css/button.css");
         pane.getStyleClass().add("pane");
 //        pane.setStyle("-fx-background-color: linear-gradient(from 0% 0% to 100% 100%, blue 0%, silver 100%);");
 
@@ -54,7 +55,9 @@ public class LoginApp extends Application {
         txSenha.setPromptText("Digite aqui sua senha");
 
         btEntrar = new Button("Entrar");
+        btEntrar.getStyleClass().add("button");
         btSair   = new Button("Sair");
+        btSair.getStyleClass().add("button");
 
         pane.getChildren().addAll(txLogin, txSenha, btEntrar, btSair);
     }

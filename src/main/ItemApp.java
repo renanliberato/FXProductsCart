@@ -61,6 +61,7 @@ public class ItemApp extends Application {
         pane = new AnchorPane();
         pane.setPrefSize(600, 400);
         pane.getStylesheets().add("css/pane.css");
+        pane.getStylesheets().add("css/button.css");
         pane.getStyleClass().add("pane");
 
         File imgFile = new File(images[index]);
@@ -75,6 +76,7 @@ public class ItemApp extends Application {
         lbPreco      = new Label(preco);
 
         btAddCarrinho = new Button("Adicionar ao Carrinho");
+        btAddCarrinho.getStyleClass().add("button");
 
 
         pane.getChildren().addAll(imgItem, lbDescricao, lbPreco, btAddCarrinho);

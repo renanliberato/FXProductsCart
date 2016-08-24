@@ -66,11 +66,15 @@ public class CarrinhoApp extends Application {
         pane = new AnchorPane();
         pane.setPrefSize(650, 600);
         pane.getStylesheets().add("css/pane.css");
+        pane.getStylesheets().add("css/button.css");
         pane.getStyleClass().add("pane");
 
         btExcluirItem     = new Button("Excluir Item");
+        btExcluirItem.getStyleClass().add("button");
         btVoltarVitrine   = new Button("Voltar à Vitrine");
+        btVoltarVitrine.getStyleClass().add("button");
         btConfirmarCompra = new Button("Confirmar Compra");
+        btConfirmarCompra.getStyleClass().add("button");
 
         tbCarrinho = new TableView<>();
         tbCarrinho.setPrefSize(600, 400);
