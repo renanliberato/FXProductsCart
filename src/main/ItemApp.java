@@ -41,6 +41,7 @@ public class ItemApp extends Application {
     };
 
     public void start(Stage stage) throws Exception {
+        ItemApp.stage = stage;
         pane = new AnchorPane();
         pane.setPrefSize(600, 400);
 

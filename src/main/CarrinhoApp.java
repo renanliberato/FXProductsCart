@@ -1,6 +1,7 @@
 package main;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -41,9 +42,12 @@ public class CarrinhoApp extends Application {
 
     private Button btExcluirItem, btVoltarVitrine,btConfirmarCompra;
 
+    private static Stage stage;
+
     private static ObservableList<ItensProperty> listItens = FXCollections.observableArrayList();;
 
     public void start(Stage stage) throws Exception {
+        CarrinhoApp.stage = stage;
         initComponents();
 
         initListeners();
@@ -115,6 +119,43 @@ public class CarrinhoApp extends Application {
                 );
             }
         });
+
+        btVoltarVitrine.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                CarrinhoApp.getStage().close();
+                ItemApp.getStage().close();
+            }
+        });
+
+        btConfirmarCompra.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Thread thread = new Thread() {
+                    public void run() {
+                        try {
+                            sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        JOptionPane.showMessageDialog(null,
+                                "Compra realizada com sucesso",
+                                "Sucesso",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                VitrineApp.getCarrinho().getProdutos().clear();
+                                CarrinhoApp.getStage().close();
+                                ItemApp.getStage().close();
+                            }
+                        });
+                    }
+                };
+                thread.start();
+            }
+        });
     }
 
     private void initLayout() {
@@ -130,6 +171,10 @@ public class CarrinhoApp extends Application {
         btConfirmarCompra.setLayoutX(pane.getWidth() - btConfirmarCompra.getWidth() - 25);
         btConfirmarCompra.setLayoutY(420);
 
+    }
+
+    public static Stage getStage() {
+        return stage;
     }
 
     public class ItensProperty {
