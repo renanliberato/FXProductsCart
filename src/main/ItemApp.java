@@ -76,7 +76,7 @@ public class ItemApp extends Application {
         lbPreco      = new Label(preco);
 
         btAddCarrinho = new Button("Adicionar ao Carrinho");
-        btAddCarrinho.getStyleClass().add("button");
+        btAddCarrinho.getStyleClass().addAll("button", "success");
 
 
         pane.getChildren().addAll(imgItem, lbDescricao, lbPreco, btAddCarrinho);

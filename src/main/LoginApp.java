@@ -55,9 +55,9 @@ public class LoginApp extends Application {
         txSenha.setPromptText("Digite aqui sua senha");
 
         btEntrar = new Button("Entrar");
-        btEntrar.getStyleClass().add("button");
+        btEntrar.getStyleClass().addAll("button", "success");
         btSair   = new Button("Sair");
-        btSair.getStyleClass().add("button");
+        btSair.getStyleClass().addAll("button", "default");
 
         pane.getChildren().addAll(txLogin, txSenha, btEntrar, btSair);
     }

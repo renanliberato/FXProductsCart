@@ -1,3 +1,18 @@
 .button {
     -fx-cursor: hand;
 }
+
+.button.success:hover {
+    -fx-background-color: green;
+    -fx-text-fill: white;
+}
+
+.button.danger:hover {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+.button.default:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: black;
+}

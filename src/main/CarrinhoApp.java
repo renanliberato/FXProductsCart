@@ -70,11 +70,11 @@ public class CarrinhoApp extends Application {
         pane.getStyleClass().add("pane");
 
         btExcluirItem     = new Button("Excluir Item");
-        btExcluirItem.getStyleClass().add("button");
+        btExcluirItem.getStyleClass().addAll("button", "danger");
         btVoltarVitrine   = new Button("Voltar à Vitrine");
-        btVoltarVitrine.getStyleClass().add("button");
+        btVoltarVitrine.getStyleClass().addAll("button", "default");
         btConfirmarCompra = new Button("Confirmar Compra");
-        btConfirmarCompra.getStyleClass().add("button");
+        btConfirmarCompra.getStyleClass().addAll("button", "success");
 
         tbCarrinho = new TableView<>();
         tbCarrinho.setPrefSize(600, 400);
