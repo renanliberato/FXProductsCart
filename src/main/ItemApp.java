@@ -1,0 +1,114 @@
+package main;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.io.File;
+
+/**
+ * Created by renan on 23/08/16.
+ */
+public class ItemApp extends Application {
+
+    private AnchorPane pane;
+
+    private ImageView imgItem;
+
+    private Label lbPreco, lbDescricao;
+
+    private Button btAddCarrinho;
+
+    private static Stage stage;
+
+    private static Produto produto;
+
+    private static int index;
+
+    private static String[] images = {
+        "assets/images/angular_sticker.png",
+        "assets/images/grunt_sticker.jpg",
+        "assets/images/mac_stickeres.jpg",
+        "assets/images/mac_up_stickers.jpg",
+        "assets/images/node_sticker"
+    };
+
+    public void start(Stage stage) throws Exception {
+        pane = new AnchorPane();
+        pane.setPrefSize(600, 400);
+
+        initComponents();
+
+        initListeners();
+        Scene scene = new Scene(pane);
+        stage.setTitle(produto.getProduto());
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
+        initLayout();
+
+
+    }
+
+    public void initComponents() {
+
+        File imgFile = new File(images[index]);
+        imgItem      = new ImageView(new Image(imgFile.toURI().toString()));
+        imgItem.setFitHeight(200);
+        imgItem.setFitWidth(200);
+
+        String descricao = "Descrição: " + produto.getProduto();
+        lbDescricao      = new Label(descricao);
+
+        String preco = "Preço: " +  produto.getPreco();
+        lbPreco      = new Label(preco);
+
+        btAddCarrinho = new Button("Adicionar ao Carrinho");
+
+
+        pane.getChildren().addAll(imgItem, lbDescricao, lbPreco, btAddCarrinho);
+    }
+
+    public void initLayout() {
+        imgItem.setLayoutX(20);
+        imgItem.setLayoutY(20);
+
+        lbDescricao.setLayoutX(300);
+        lbDescricao.setLayoutY(60);
+
+        lbPreco.setLayoutX(300);
+        lbPreco.setLayoutY(100);
+
+        btAddCarrinho.setLayoutX(300);
+        btAddCarrinho.setLayoutY(300);
+    }
+
+    public void initListeners() {
+
+    }
+
+    public static Stage getStage() {
+        return stage;
+    }
+
+    public static Produto getProduto() {
+        return produto;
+    }
+
+    public static void setProduto(Produto produto) {
+        ItemApp.produto = produto;
+    }
+
+    public static int getIndex() {
+        return index;
+    }
+
+    public static void setIndex(int index) {
+        ItemApp.index = index;
+    }
+}

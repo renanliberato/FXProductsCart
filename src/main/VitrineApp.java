@@ -3,6 +3,8 @@ package main;
 import javafx.application.Application;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.awt.event.ActionListener;
 
 /**
  * Created by renan on 22/08/16.
@@ -66,13 +70,14 @@ public class VitrineApp extends Application {
         columnProduto = new TableColumn<ItensProperty, String>();
         columnProduto.setText("Produto");
         columnProduto.setPrefWidth(600);
+        columnProduto.setCellValueFactory(new PropertyValueFactory<ItensProperty, String>("produto"));
+
         columnPreco   = new TableColumn<ItensProperty, Double>();
         columnPreco.setText("Preço");
         columnPreco.setPrefWidth(180);
-        tbVitrine.getColumns().addAll(columnProduto, columnPreco);
-
-        columnProduto.setCellValueFactory(new PropertyValueFactory<ItensProperty, String>("produto"));
         columnPreco.setCellValueFactory(new PropertyValueFactory<ItensProperty, Double>("preco"));
+
+        tbVitrine.getColumns().addAll(columnProduto, columnPreco);
 
         initItens();
 
@@ -84,14 +89,14 @@ public class VitrineApp extends Application {
     private void initItens() {
         Vitrine v = new Vitrine();
         v.addProdutos(
-                new Produto("Bola Topper", 15.00),
-                new Produto("Bola Nike", 20.00),
-                new Produto("Bola Umbro", 30.00),
-                new Produto("Chuteira Umbro", 100.00)
+                new Produto("Adesivo AngularJS",5.00),
+                new Produto("Adesivo Grunt", 4.00),
+                new Produto("Macbook Customizado", 10500.00),
+                new Produto("Macbook com adesivos 2010", 9000.00),
+                new Produto("Adesivo NodeJS", 3.00)
         );
 
         for (Produto p : v.getProdutos()) {
-            System.out.println(p.getPreco());
             listItens.add(new ItensProperty(p.getProduto(), p.getPreco()));
         }
 
@@ -111,6 +116,7 @@ public class VitrineApp extends Application {
     }
 
     private void initListeners() {
+
         txPesquisa.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -121,6 +127,22 @@ public class VitrineApp extends Application {
                 }
             }
         });
+
+        tbVitrine.getSelectionModel().selectedItemProperty()
+                .addListener(new ChangeListener<ItensProperty>() {
+                    @Override
+                    public void changed(ObservableValue<? extends ItensProperty> observable, ItensProperty oldItem, ItensProperty newItem) {
+
+                        ItemApp.setProduto(new Produto(newItem.getProduto(), newItem.getPreco()));
+                        ItemApp.setIndex(tbVitrine.getSelectionModel().getSelectedIndex());
+
+                        try {
+                            new ItemApp().start(new Stage());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
     }
 
     private void initLayout() {
