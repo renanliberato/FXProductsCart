@@ -14,7 +14,7 @@
         <Button fx:id="loginButton" text="Entrar" textAlignment="CENTER" onAction="#loginAction"/>
     </HBox>
     <HBox alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="3">
-        <Button fx:id="exitButton" text="Sair" textAlignment="CENTER" />
+        <Button fx:id="exitButton" text="Sair" textAlignment="CENTER" onAction="#exitAction"/>
     </HBox>
 
 </GridPane>

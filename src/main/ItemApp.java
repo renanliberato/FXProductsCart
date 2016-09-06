@@ -100,7 +100,7 @@ public class ItemApp extends Application {
         btAddCarrinho.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                VitrineApp.getCarrinho().addProdutos(produto);
+//                VitrineApp.getCarrinho().addProdutos(produto);
 
                 try {
                     new CarrinhoApp().start(new Stage());

@@ -1,0 +1,39 @@
+<?import javafx.scene.layout.GridPane?>
+<?import java.net.URL?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import main.Produto?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.TextField?>
+<GridPane xmlns:fx="http://javafx.com/fxml"
+          fx:controller="main.VitrineAppController" alignment="CENTER" hgap="10" vgap="10">
+    <padding><Insets top="25" right="25" bottom="10" left="25"/></padding>
+    <TextField fx:id="searchField" onAction="#searchProduct" promptText="Produto 01"
+               GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <TableView fx:id="tableView" GridPane.columnIndex="0" GridPane.rowIndex="1" prefWidth="780"
+               prefHeight="550" onMouseClicked="#openItem">
+        <columns>
+            <TableColumn text="Produto" prefWidth="570">
+                <cellValueFactory><PropertyValueFactory property="produto"/></cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Preço" prefWidth="180">
+                <cellValueFactory><PropertyValueFactory property="preco"/></cellValueFactory>
+            </TableColumn>
+        </columns>
+        <items>
+            <FXCollections fx:id="listItems" fx:factory="observableArrayList">
+                <Produto produto="Adesivo AngularJS" preco="5.00"/>
+                <Produto produto="Adesivo Grunt" preco="4.00"/>
+                <Produto produto="Macbook Customizado" preco="10500.00"/>
+                <Produto produto="Macbook com adesivos 2010" preco="9000.00"/>
+                <Produto produto="Adesivo NodeJS" preco="3.00"/>
+            </FXCollections>
+        </items>
+    </TableView>
+
+    <stylesheets>
+        <!--<URL value="css/pane.css" />-->
+    </stylesheets>
+</GridPane>

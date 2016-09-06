@@ -98,9 +98,9 @@ public class CarrinhoApp extends Application {
 
     private void initItems() {
         listItens.clear();
-        for (Produto p : VitrineApp.getCarrinho().getProdutos()) {
-            listItens.add(new ItensProperty(p.getProduto(), p.getPreco()));
-        }
+//        for (Produto p : VitrineApp.getCarrinho().getProdutos()) {
+//            listItens.add(new ItensProperty(p.getProduto(), p.getPreco()));
+//        }
 
         tbCarrinho.setItems(listItens);
     }
@@ -116,9 +116,9 @@ public class CarrinhoApp extends Application {
                             JOptionPane.INFORMATION_MESSAGE);
                     return;
                 }
-                VitrineApp.getCarrinho().removeProduto(new Produto(
-                        tbCarrinho.getSelectionModel().getSelectedItem().getProduto(),
-                        tbCarrinho.getSelectionModel().getSelectedItem().getPreco()));
+//                VitrineApp.getCarrinho().removeProduto(new Produto(
+//                        tbCarrinho.getSelectionModel().getSelectedItem().getProduto(),
+//                        tbCarrinho.getSelectionModel().getSelectedItem().getPreco()));
 
                 tbCarrinho.getItems().remove(
                         tbCarrinho.getSelectionModel().getSelectedItem()
@@ -152,7 +152,7 @@ public class CarrinhoApp extends Application {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                VitrineApp.getCarrinho().getProdutos().clear();
+//                                VitrineApp.getCarrinho().getProdutos().clear();
                                 CarrinhoApp.getStage().close();
                                 ItemApp.getStage().close();
                             }
